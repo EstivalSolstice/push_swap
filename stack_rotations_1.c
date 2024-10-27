@@ -6,11 +6,13 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:53:03 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 16:57:51 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:39:50 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
+
 
 void	ra(t_push_swap *ps)
 {

@@ -6,11 +6,13 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:58:41 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 16:59:21 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:39:43 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/libft.h"
+
 
 int	partition(int *arr, int low, int high)
 {
