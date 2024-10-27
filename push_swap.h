@@ -6,14 +6,14 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 18:26:19 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/27 18:51:36 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "libft/libft.h"
 # include <ctype.h>
 # include <limits.h>
 # include <stdarg.h>
