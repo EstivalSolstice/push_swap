@@ -6,12 +6,11 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:27:59 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:47:06 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
 void	swap(t_stack *stack)
 {
@@ -47,7 +46,7 @@ void	push_swap_execute(int argc, char **argv)
 	initialize_stacks(&ps, values, indices, size);
 	sort_push_swap(&ps);
 	final_rotate_sort(&ps);
-	ft_printf("Total moves: %d\n", ps.move_count);
+	// ft_printf("Total moves: %d\n", ps.move_count);
 	free(values);
 	free(sorted_values);
 	free(indices);
@@ -56,24 +55,29 @@ void	push_swap_execute(int argc, char **argv)
 void	parse_single_argument(int *argc, char ***argv)
 {
 	char	**split_args;
+	char	**new_argv;
+	int		count;
 	int		i;
 
 	if (*argc == 2)
 	{
-		*split_args = ft_split((*argv)[1], ' ');
 		i = 0;
-		*argc = 0;
-		while (split_args[*argc] != NULL)
-			(*argc)++;
-		*argv = malloc(sizeof(char *) * (*argc + 1));
+		count = 0;
+		split_args = ft_split((*argv)[1], ' ');
+		while (split_args[count] != NULL)
+			count++;
+		*argc = count + 1;
+		new_argv = malloc(sizeof(char *) * (*argc + 1));
 		if (!*argv)
 			exit(1);
+		new_argv[0] = (*argv)[0];
 		while (i < *argc)
 		{
-			(*argv)[i] = split_args[i];
+			new_argv[i + 1] = split_args[i];
 			i++;
 		}
-		(*argv)[*argc] = NULL;
+		new_argv[*argc] = NULL;
+		*argv = new_argv;
 		free(split_args);
 	}
 }

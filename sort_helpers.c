@@ -6,11 +6,10 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:56:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:27:38 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:31:41 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 int	is_empty(t_stack *stack)

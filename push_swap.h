@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 16:59:54 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:31:46 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-// typedef struct s_list_node
-// {
-// 	void				*content;
-// 	struct s_list_node	*next;
-// }						t_list_node;
 
 typedef struct s_node
 {
