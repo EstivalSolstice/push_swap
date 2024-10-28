@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:08:26 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 20:20:13 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:35:38 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	*assign_indices(int *values, int *sorted_values, int size)
 		error_exit_indices(values, sorted_values);
 	while (i < size)
 	{
+		j = 0;
 		while (j < size)
 		{
 			if (values[i] == sorted_values[j])
