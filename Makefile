@@ -19,10 +19,11 @@ vpath %.c $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS := helper_functions.c main.c move_calculation.c \
+SRCS := helper_functions.c move_calculation.c parsing.c \
 		push_swap_main.c push_swap_sort.c sort_helpers.c \
 		sorting_algorithm.c stack_operations.c stack_rotations_1.c \
-		stack_rotations_2.c stack_utils.c
+		stack_rotations_2.c stack_utils.c assign_indices.c \
+		copy_and_sort_values.c initialize_stacks.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 # BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))

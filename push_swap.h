@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:46 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:24:46 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,9 @@ void				initialize_stacks(t_push_swap *ps, int *values,
 						int *indices, int size);
 void				sort_push_swap(t_push_swap *ps);
 void				final_rotate_sort(t_push_swap *ps);
+
+void				initialize_ab(t_push_swap *ps, t_stack *a, t_stack *b);
+void				error_exit_indices(int *values, int *sorted_values);
+void				error_exit_init(int *values, int *indices);
 
 #endif

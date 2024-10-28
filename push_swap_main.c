@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:47:06 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:35:08 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,145 +46,19 @@ void	push_swap_execute(int argc, char **argv)
 	initialize_stacks(&ps, values, indices, size);
 	sort_push_swap(&ps);
 	final_rotate_sort(&ps);
-	// ft_printf("Total moves: %d\n", ps.move_count);
 	free(values);
 	free(sorted_values);
 	free(indices);
 }
+	// ft_printf("Total moves: %d\n", ps.move_count);
 
-void	parse_single_argument(int *argc, char ***argv)
+int	main(int argc, char **argv)
 {
-	char	**split_args;
-	char	**new_argv;
-	int		count;
-	int		i;
-
-	if (*argc == 2)
-	{
-		i = 0;
-		count = 0;
-		split_args = ft_split((*argv)[1], ' ');
-		while (split_args[count] != NULL)
-			count++;
-		*argc = count + 1;
-		new_argv = malloc(sizeof(char *) * (*argc + 1));
-		if (!*argv)
-			exit(1);
-		new_argv[0] = (*argv)[0];
-		while (i < *argc)
-		{
-			new_argv[i + 1] = split_args[i];
-			i++;
-		}
-		new_argv[*argc] = NULL;
-		*argv = new_argv;
-		free(split_args);
-	}
-}
-
-int	*parse_and_convert_args(char **argv, int size)
-{
-	int	*values;
-	int	i;
-
-	i = 0;
-	values = malloc(sizeof(int) * size);
-	if (!values)
+	if (argc < 2)
 	{
 		ft_printf("Error\n");
-		exit(1);
+		return (1);
 	}
-	while (i < size)
-	{
-		values[i] = ft_atoi(argv[i + 1]);
-		i++;
-	}
-	return (values);
-}
-
-int	*copy_and_sort_values(int *values, int size)
-{
-	int	*sorted_values;
-	int	i;
-
-	i = 0;
-	sorted_values = malloc(sizeof(int) * size);
-	if (!sorted_values)
-	{
-		ft_printf("Error\n");
-		free(values);
-		exit(1);
-	}
-	while (i < size)
-	{
-		sorted_values[i] = values[i];
-		i++;
-	}
-	quick_sort(sorted_values, 0, size - 1);
-	return (sorted_values);
-}
-
-int	*assign_indices(int *values, int *sorted_values, int size)
-{
-	int	*indices;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	indices = malloc(sizeof(int) * size);
-	if (!indices)
-	{
-		ft_printf("Error\n");
-		free(values);
-		free(sorted_values);
-		exit(1);
-	}
-	while (i < size)
-	{
-		while (j < size)
-		{
-			if (values[i] == sorted_values[j])
-			{
-				indices[i] = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (indices);
-}
-
-void	initialize_stacks(t_push_swap *ps, int *values, int *indices, int size)
-{
-	t_stack	*a;
-	t_stack	*b;
-	t_node	*node;
-	int		i;
-
-	i = size - 1;
-	a = malloc(sizeof(t_stack));
-	b = malloc(sizeof(t_stack));
-	if (!a || !b)
-	{
-		ft_printf("Error\n");
-		free(values);
-		free(indices);
-		exit(1);
-	}
-	a->top = NULL;
-	a->size = 0;
-	b->top = NULL;
-	b->size = 0;
-	ps->a = a;
-	ps->b = b;
-	ps->move_count = 0;
-	while (i >= 0)
-	{
-		node = new_node(values[i], indices[i]);
-		push(a, node);
-		i--;
-	}
-	ps->move_count = 0;
+	push_swap_execute(argc, argv);
+	return (0);
 }

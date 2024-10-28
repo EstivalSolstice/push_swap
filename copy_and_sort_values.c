@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   copy_and_sort_values.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 16:41:20 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:16 by joltmann         ###   ########.fr       */
+/*   Created: 2024/10/28 19:11:15 by joltmann          #+#    #+#             */
+/*   Updated: 2024/10/28 19:11:39 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	*copy_and_sort_values(int *values, int size)
 {
-	if (argc < 2)
+	int	*sorted_values;
+	int	i;
+
+	i = 0;
+	sorted_values = malloc(sizeof(int) * size);
+	if (!sorted_values)
 	{
 		ft_printf("Error\n");
-		return (1);
+		free(values);
+		exit(1);
 	}
-	push_swap_execute(argc, argv);
-	return (0);
+	while (i < size)
+	{
+		sorted_values[i] = values[i];
+		i++;
+	}
+	quick_sort(sorted_values, 0, size - 1);
+	return (sorted_values);
 }

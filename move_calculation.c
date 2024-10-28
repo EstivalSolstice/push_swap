@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:24 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:02:39 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,17 @@ int	find_target_position(t_stack *a, int b_index)
 int	calculate_rotation_a(t_stack *a, int target_position)
 {
 	if (target_position <= a->size / 2)
-	{
 		return (target_position);
-	}
 	else
-	{
 		return ((a->size - target_position) * -1);
-	}
 }
 
 int	calculate_rotation_b(t_stack *b, int b_position)
 {
 	if (b_position <= b->size / 2)
-	{
 		return (b_position);
-	}
 	else
-	{
 		return ((b->size - b_position) * -1);
-	}
 }
 
 int	calculate_move_cost(t_stack *a, t_stack *b, int b_position)
