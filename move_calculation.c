@@ -6,54 +6,11 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 18:02:39 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:39:12 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	find_target_position(t_stack *a, int b_index)
-{
-	t_node	*current;
-	int		position;
-	int		min_diff;
-	int		target_position;
-	int		diff;
-
-	current = a->top;
-	position = 0;
-	min_diff = INT_MAX;
-	target_position = 0;
-	while (current)
-	{
-		diff = current->index - b_index;
-		if (diff > 0 && diff < min_diff)
-		{
-			min_diff = diff;
-			target_position = position;
-		}
-		current = current->next;
-		position++;
-	}
-	if (min_diff == INT_MAX)
-	{
-		current = a->top;
-		min_diff = INT_MAX;
-		position = 0;
-		while (current)
-		{
-			diff = b_index - current->index;
-			if (diff > 0 && diff < min_diff)
-			{
-				min_diff = diff;
-				target_position = position + 1;
-			}
-			current = current->next;
-			position++;
-		}
-	}
-	return (target_position);
-}
 
 int	calculate_rotation_a(t_stack *a, int target_position)
 {

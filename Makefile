@@ -19,11 +19,12 @@ vpath %.c $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS := helper_functions.c move_calculation.c parsing.c \
+SRCS := helper_functions.c move_calculation.c find_target_pos.c \
 		push_swap_main.c push_swap_sort.c sort_helpers.c \
 		sorting_algorithm.c stack_operations.c stack_rotations_1.c \
 		stack_rotations_2.c stack_utils.c assign_indices.c \
-		copy_and_sort_values.c initialize_stacks.c
+		copy_and_sort_values.c initialize_stacks.c parsing.c \
+		perform_rotations.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 # BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
@@ -60,6 +61,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) libft/_obj libft/libft.a
 
 re: fclean submodule_update all
 
@@ -69,14 +71,26 @@ $(LIBFT):
 submodule_update:
 	git submodule update --remote --merge
 
-re_sub: submodule_rebuild
+re_submodule: submodule_rebuild
 
 submodule_rebuild:
 	git submodule deinit -f .
 	git submodule update --init --recursive
 
+help:
+	@echo "Makefile for $(NAME)"
+	@echo "Usage:"
+	@echo "	make						Build the project"
+	@echo "	make clean					Remove object files in the main project"
+	@echo "	make fclean					Remove all build files, including libft's objects"
+	@echo "	make re						Clean and rebuild the project"
+	@echo "	make submodule_update				Update all submodules to the latest commit"
+	@echo "	make re_submodule				Fully reset and update submodules"
+	@echo "	make submodule_rebuild				Reinitialize submodules from scratch"
+	@echo "	make help					Display this help message"
+
 -include $(OBJS:%.o=%.d)
 # -include $(BONUS_OBJS:%.o=%.d)
 # -include $(GNL_OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re re_sub submodule_rebuild
+.PHONY: all clean fclean re submodule_update re_submodule submodule_rebuild help
