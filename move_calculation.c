@@ -6,13 +6,12 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 20:04:50 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:27:17 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft/libft.h"
-
+#include "push_swap.h"
 
 int	find_target_position(t_stack *a, int b_index)
 {

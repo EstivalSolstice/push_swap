@@ -6,28 +6,30 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:58:41 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 19:39:43 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:26:38 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft/libft.h"
-
+#include "push_swap.h"
 
 int	partition(int *arr, int low, int high)
 {
 	int	pivot;
 	int	i;
+	int	j;
 
+	j = low;
 	pivot = arr[high];
 	i = low - 1;
-	for (int j = low; j <= high - 1; j++)
+	while (j <= high - 1)
 	{
 		if (arr[j] <= pivot)
 		{
 			i++;
 			swap_mod(&arr[i], &arr[j]);
 		}
+		j++;
 	}
 	swap_mod(&arr[i + 1], &arr[high]);
 	return (i + 1);

@@ -6,13 +6,12 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:41:20 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 19:39:20 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:27:14 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft/libft.h"
-
+#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {

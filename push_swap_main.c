@@ -6,13 +6,12 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 19:39:28 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:27:59 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
-
 
 void	swap(t_stack *stack)
 {
@@ -40,6 +39,7 @@ void	push_swap_execute(int argc, char **argv)
 	int			*indices;
 	t_push_swap	ps;
 
+	parse_single_argument(&argc, &argv);
 	size = argc - 1;
 	values = parse_and_convert_args(argv, size);
 	sorted_values = copy_and_sort_values(values, size);
@@ -53,19 +53,47 @@ void	push_swap_execute(int argc, char **argv)
 	free(indices);
 }
 
+void	parse_single_argument(int *argc, char ***argv)
+{
+	char	**split_args;
+	int		i;
+
+	if (*argc == 2)
+	{
+		*split_args = ft_split((*argv)[1], ' ');
+		i = 0;
+		*argc = 0;
+		while (split_args[*argc] != NULL)
+			(*argc)++;
+		*argv = malloc(sizeof(char *) * (*argc + 1));
+		if (!*argv)
+			exit(1);
+		while (i < *argc)
+		{
+			(*argv)[i] = split_args[i];
+			i++;
+		}
+		(*argv)[*argc] = NULL;
+		free(split_args);
+	}
+}
+
 int	*parse_and_convert_args(char **argv, int size)
 {
 	int	*values;
+	int	i;
 
+	i = 0;
 	values = malloc(sizeof(int) * size);
 	if (!values)
 	{
 		ft_printf("Error\n");
 		exit(1);
 	}
-	for (int i = 0; i < size; i++)
+	while (i < size)
 	{
 		values[i] = ft_atoi(argv[i + 1]);
+		i++;
 	}
 	return (values);
 }
@@ -73,7 +101,9 @@ int	*parse_and_convert_args(char **argv, int size)
 int	*copy_and_sort_values(int *values, int size)
 {
 	int	*sorted_values;
+	int	i;
 
+	i = 0;
 	sorted_values = malloc(sizeof(int) * size);
 	if (!sorted_values)
 	{
@@ -81,9 +111,10 @@ int	*copy_and_sort_values(int *values, int size)
 		free(values);
 		exit(1);
 	}
-	for (int i = 0; i < size; i++)
+	while (i < size)
 	{
 		sorted_values[i] = values[i];
+		i++;
 	}
 	quick_sort(sorted_values, 0, size - 1);
 	return (sorted_values);
@@ -92,7 +123,11 @@ int	*copy_and_sort_values(int *values, int size)
 int	*assign_indices(int *values, int *sorted_values, int size)
 {
 	int	*indices;
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
 	indices = malloc(sizeof(int) * size);
 	if (!indices)
 	{
@@ -101,16 +136,18 @@ int	*assign_indices(int *values, int *sorted_values, int size)
 		free(sorted_values);
 		exit(1);
 	}
-	for (int i = 0; i < size; i++)
+	while (i < size)
 	{
-		for (int j = 0; j < size; j++)
+		while (j < size)
 		{
 			if (values[i] == sorted_values[j])
 			{
 				indices[i] = j;
 				break ;
 			}
+			j++;
 		}
+		i++;
 	}
 	return (indices);
 }
@@ -120,7 +157,9 @@ void	initialize_stacks(t_push_swap *ps, int *values, int *indices, int size)
 	t_stack	*a;
 	t_stack	*b;
 	t_node	*node;
+	int		i;
 
+	i = size - 1;
 	a = malloc(sizeof(t_stack));
 	b = malloc(sizeof(t_stack));
 	if (!a || !b)
@@ -137,9 +176,11 @@ void	initialize_stacks(t_push_swap *ps, int *values, int *indices, int size)
 	ps->a = a;
 	ps->b = b;
 	ps->move_count = 0;
-	for (int i = size - 1; i >= 0; i--)
+	while (i >= 0)
 	{
 		node = new_node(values[i], indices[i]);
 		push(a, node);
+		i--;
 	}
+	ps->move_count = 0;
 }
