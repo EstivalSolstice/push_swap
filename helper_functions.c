@@ -6,34 +6,34 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:05:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 21:39:34 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/29 23:50:06 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **split)
-{
-	int	i;
+// void	free_split(char **split)
+// {
+// 	int	i;
 
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
+// 	i = 0;
+// 	while (split[i])
+// 	{
+// 		free(split[i]);
+// 		i++;
+// 	}
+// 	free(split);
+// }
 
-int	is_numeric(const char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
-	{
-		if (!isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
+// int	is_numeric(const char *str)
+// {
+// 	if (*str == '-' || *str == '+')
+// 		str++;
+// 	while (*str)
+// 	{
+// 		if (!isdigit(*str))
+// 			return (0);
+// 		str++;
+// 	}
+// 	return (1);
+// }

@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 21:50:28 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:41:27 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,14 @@ void	push_swap_execute(int argc, char **argv)
 	int			*indices;
 	t_push_swap	ps;
 
+	ps.print_mode = 1;
 	parse_single_argument(&argc, &argv);
 	size = argc - 1;
+	if (!validate_args(argv, size))
+	{
+		ft_printf("Error\n");
+		return ;
+	}
 	values = parse_and_convert_args(argv, size);
 	sorted_values = copy_and_sort_values(values, size);
 	indices = assign_indices(values, sorted_values, size);
@@ -50,7 +56,7 @@ void	push_swap_execute(int argc, char **argv)
 	free(sorted_values);
 	free(indices);
 }
-	// ft_printf("Total moves: %d\n", ps.move_count);
+// ft_printf("Total moves: %d\n", ps.move_count);
 
 // int	main(int argc, char **argv)
 // {

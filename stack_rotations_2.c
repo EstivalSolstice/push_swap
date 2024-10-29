@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:53:15 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:32:00 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:45:22 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	rra(t_push_swap *ps)
 {
 	reverse_rotate(ps->a);
-	ft_printf("rra\n");
+	if (ps->print_mode)
+		ft_printf("rra\n");
 	ps->move_count++;
 }
 
 void	rrb(t_push_swap *ps)
 {
 	reverse_rotate(ps->b);
-	ft_printf("rrb\n");
+	if (ps->print_mode)
+		ft_printf("rrb\n");
 	ps->move_count++;
 }
 
@@ -30,6 +32,7 @@ void	rrr(t_push_swap *ps)
 {
 	reverse_rotate(ps->a);
 	reverse_rotate(ps->b);
-	ft_printf("rrr\n");
+	if (ps->print_mode)
+		ft_printf("rrr\n");
 	ps->move_count++;
 }

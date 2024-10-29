@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 21:16:42 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:41:55 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # include <string.h>
 # include <unistd.h>
 
+/**
+ * @struct s_node
+ * @brief Represents a node in the stack.
+ * @details Each node stores a value and its sorted index, along with pointers
+ * to the previous and next nodes, forming a doubly linked list structure.
+ */
 typedef struct s_node
 {
 	int				value;
@@ -33,17 +39,34 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
+/**
+ * @struct s_stack
+
+	* @brief Represents a stack with a pointer to the top node and the current size.
+ *
+ * @details This structure is used to track elements in a stack and support
+ * operations like push, pop, and swap.
+ */
 typedef struct s_stack
 {
 	t_node			*top;
 	int				size;
 }					t_stack;
 
+/**
+ * @struct s_push_swap
+ * @brief Holds the two stacks (`a` and `b`) and tracks the number of moves.
+ *
+ * @see s_stack
+ * @details This structure manages sorting operations in the push_swap program,
+ * tracking the stacks and counting the number of moves performed.
+ */
 typedef struct s_push_swap
 {
 	t_stack			*a;
 	t_stack			*b;
 	int				move_count;
+	int				print_mode;
 }					t_push_swap;
 
 // Stack Operations (Swap, Push, Rotate)
@@ -83,8 +106,8 @@ void				perform_rotations(t_push_swap *ps, int rotation_a,
 
 // Helper Functions
 
-void				free_split(char **split);
-int					is_numeric(const char *str);
+// void				free_split(char **split);
+// int					is_numeric(const char *str);
 void				swap_mod(int *a, int *b);
 int					partition(int *arr, int low, int high);
 void				quick_sort(int *arr, int low, int high);
@@ -104,5 +127,6 @@ void				final_rotate_sort(t_push_swap *ps);
 void				initialize_ab(t_push_swap *ps, t_stack *a, t_stack *b);
 void				error_exit_indices(int *values, int *sorted_values);
 void				error_exit_init(int *values, int *indices);
+int					validate_args(char **argv, int size);
 
 #endif

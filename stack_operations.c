@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:51:07 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:53 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:43:57 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	sa(t_push_swap *ps)
 {
 	swap(ps->a);
-	ft_printf("sa\n");
+	if (ps->print_mode)
+		printf("sa\n");
 	ps->move_count++;
 }
 
 void	sb(t_push_swap *ps)
 {
 	swap(ps->b);
-	ft_printf("sb\n");
+	if (ps->print_mode)
+		printf("sb\n");
 	ps->move_count++;
 }
 
@@ -30,7 +32,8 @@ void	ss(t_push_swap *ps)
 {
 	swap(ps->a);
 	swap(ps->b);
-	ft_printf("ss\n");
+	if (ps->print_mode)
+		printf("ss\n");
 	ps->move_count++;
 }
 
@@ -42,7 +45,8 @@ void	pa(t_push_swap *ps)
 	if (node)
 	{
 		push(ps->a, node);
-		ft_printf("pa\n");
+		if (ps->print_mode)
+			ft_printf("pa\n");
 		ps->move_count++;
 	}
 }
@@ -55,7 +59,8 @@ void	pb(t_push_swap *ps)
 	if (node)
 	{
 		push(ps->b, node);
-		ft_printf("pb\n");
+		if (ps->print_mode)
+			ft_printf("pb\n");
 		ps->move_count++;
 	}
 }
