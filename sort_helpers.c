@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:56:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 20:19:15 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:46:17 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,6 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-// void	sort_three(t_stack *a, t_push_swap *ps)
-// {
-// 	int	first;
-// 	int	second;
-// 	int	third;
-
-// 	first = a->top->index;
-// 	second = a->top->next->index;
-// 	third = a->top->next->next->index;
-// 	if (first < second && second < third)
-// 		return ;
-// 	if (first > second && second < third && first < third)
-// 		return (sa(ps));
-// 	if (first < second && second > third && first < third)
-// 		return (rra(ps), sa(ps));
-// 	if (first < second && second > third && first > third)
-// 		return (sa(ps), rra(ps));
-// 	if (first > second && second < third && first > third)
-// 		return (ra(ps));
-// 	if (first > second && second > third)
-// 		return (ra(ps), sa(ps));
-// }
-
 void	sort_three(t_stack *a, t_push_swap *ps)
 {
 	int	first;
@@ -76,32 +53,15 @@ void	sort_three(t_stack *a, t_push_swap *ps)
 	if (first < second && second < third)
 		return ;
 	if (first > second && second < third && first < third)
-	{
-		sa(ps);
-		return ;
-	}
+		return (sa(ps));
 	if (first < second && second > third && first < third)
-	{
-		rra(ps);
-		sa(ps);
-		return ;
-	}
+		return (rra(ps), sa(ps));
 	if (first < second && second > third && first > third)
-	{
-		sa(ps);
-		rra(ps);
-		return ;
-	}
+		return (sa(ps), rra(ps));
 	if (first > second && second < third && first > third)
-	{
-		ra(ps);
-		return ;
-	}
+		return (ra(ps));
 	if (first > second && second > third)
-	{
-		ra(ps);
-		sa(ps);
-	}
+		return (ra(ps), sa(ps));
 }
 
 void	swap_mod(int *a, int *b)

@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 20:37:49 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:50:28 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	push_swap_execute(int argc, char **argv)
 }
 	// ft_printf("Total moves: %d\n", ps.move_count);
 
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	push_swap_execute(argc, argv);
-	return (0);
-}
+// int	main(int argc, char **argv)
+// {
+// 	if (argc < 2)
+// 	{
+// 		ft_printf("Error\n");
+// 		return (1);
+// 	}
+// 	push_swap_execute(argc, argv);
+// 	return (0);
+// }

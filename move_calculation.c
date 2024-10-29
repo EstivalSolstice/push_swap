@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 19:39:12 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:36:37 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,34 @@ int	calculate_rotation_b(t_stack *b, int b_position)
 		return ((b->size - b_position) * -1);
 }
 
+int	calculate_rotation_cost(int rotation_a, int rotation_b)
+{
+	int		cost;
+	int		rotation_a_absolute;
+	int		rotation_b_absolute;
+
+	cost = 0;
+	if (rotation_a < 0)
+		rotation_a_absolute = -rotation_a;
+	else
+		rotation_a_absolute = rotation_a;
+	if (rotation_b < 0)
+		rotation_b_absolute = -rotation_b;
+	else
+		rotation_b_absolute = rotation_b;
+	if ((rotation_a >= 0 && rotation_b >= 0) || (rotation_a < 0
+			&& rotation_b < 0))
+	{
+		if (rotation_a_absolute > rotation_b_absolute)
+			cost = rotation_a_absolute;
+		else
+			cost = rotation_b_absolute;
+	}
+	else
+		cost = rotation_a_absolute + rotation_b_absolute;
+	return (cost += 1, cost);
+}
+
 int	calculate_move_cost(t_stack *a, t_stack *b, int b_position)
 {
 	t_node	*b_node;
@@ -35,9 +63,6 @@ int	calculate_move_cost(t_stack *a, t_stack *b, int b_position)
 	int		target_position;
 	int		rotation_a;
 	int		rotation_b;
-	int		cost;
-	int		rotation_a_abs;
-	int		rotation_b_abs;
 
 	b_node = b->top;
 	i = 0;
@@ -47,33 +72,9 @@ int	calculate_move_cost(t_stack *a, t_stack *b, int b_position)
 		i++;
 	}
 	if (b_node == NULL)
-	{
 		return (INT_MAX);
-	}
 	target_position = find_target_position(a, b_node->index);
 	rotation_a = calculate_rotation_a(a, target_position);
 	rotation_b = calculate_rotation_b(b, b_position);
-	cost = 0;
-	if (rotation_a < 0)
-		rotation_a_abs = -rotation_a;
-	else
-		rotation_a_abs = rotation_a;
-	if (rotation_b < 0)
-		rotation_b_abs = -rotation_b;
-	else
-		rotation_b_abs = rotation_b;
-	if ((rotation_a >= 0 && rotation_b >= 0) || (rotation_a < 0
-			&& rotation_b < 0))
-	{
-		if (rotation_a_abs > rotation_b_abs)
-			cost = rotation_a_abs;
-		else
-			cost = rotation_b_abs;
-	}
-	else
-	{
-		cost = rotation_a_abs + rotation_b_abs;
-	}
-	cost += 1;
-	return (cost);
+	return (calculate_rotation_cost(rotation_a, rotation_b));
 }

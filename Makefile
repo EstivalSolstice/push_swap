@@ -24,7 +24,7 @@ SRCS := helper_functions.c move_calculation.c find_target_pos.c \
 		sorting_algorithm.c stack_operations.c stack_rotations_1.c \
 		stack_rotations_2.c stack_utils.c assign_indices.c \
 		copy_and_sort_values.c initialize_stacks.c parsing.c \
-		perform_rotations.c
+		perform_rotations.c final_rotate_sort.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 # BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
