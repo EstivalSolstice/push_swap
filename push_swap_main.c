@@ -6,29 +6,11 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/30 00:41:27 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/10/31 21:29:37 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	swap(t_stack *stack)
-{
-	t_node	*first;
-	t_node	*second;
-
-	if (!stack || stack->size < 2)
-		return ;
-	first = stack->top;
-	second = first->next;
-	first->next = second->next;
-	if (second->next)
-		second->next->prev = first;
-	second->next = first;
-	first->prev = second;
-	second->prev = NULL;
-	stack->top = second;
-}
 
 void	push_swap_execute(int argc, char **argv)
 {
@@ -58,13 +40,13 @@ void	push_swap_execute(int argc, char **argv)
 }
 // ft_printf("Total moves: %d\n", ps.move_count);
 
-// int	main(int argc, char **argv)
-// {
-// 	if (argc < 2)
-// 	{
-// 		ft_printf("Error\n");
-// 		return (1);
-// 	}
-// 	push_swap_execute(argc, argv);
-// 	return (0);
-// }
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	push_swap_execute(argc, argv);
+	return (0);
+}

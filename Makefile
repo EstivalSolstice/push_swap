@@ -1,4 +1,5 @@
 NAME := push_swap
+BONUS_NAME := checker
 .DEFAULT_GOAL := all
 CC := cc
 RM := rm -rf
@@ -10,6 +11,7 @@ RM := rm -rf
 OBJ_DIR := _obj
 INC_DIRS := . libft
 SRC_DIRS := . 
+BONUS_DIR := checker_bonus/_obj_bonus
 
 # Tell the Makefile where headers and source files are
 vpath %.h $(INC_DIRS)
@@ -19,15 +21,25 @@ vpath %.c $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS := helper_functions.c move_calculation.c find_target_pos.c \
-		push_swap_main.c push_swap_sort.c sort_helpers.c \
-		sorting_algorithm.c stack_operations.c stack_rotations_1.c \
-		stack_rotations_2.c stack_utils.c assign_indices.c \
-		copy_and_sort_values.c initialize_stacks.c parsing.c \
-		perform_rotations.c final_rotate_sort.c validate_args.c
+SRCS := 		helper_functions.c move_calculation.c find_target_pos.c \
+				push_swap_sort.c sort_helpers.c validate_args.c \
+				sorting_algorithm.c stack_operations.c stack_rotate_reverse.c \
+				stack_rotate_simple.c stack_utils.c assign_indices.c \
+				copy_and_sort_values.c initialize_stacks.c parsing.c \
+				perform_rotations.c final_rotate_sort.c swap.c
+MAIN_SRCS :=	push_swap_main.c
 
-OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
-# BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
+BONUS_MAIN_SRCS := 	cps_main.c
+BONUS_SRCS := 		cps_convert_args.c cps_parse_validate.c cps_initialize.c \
+    					cps_operations.c cps_helpers.c cps_sort_assign_indices.c
+    					
+
+# BONUS_SRCS := 	cps_convert_args.c cps_helpers.c cps_initialize.c \
+# 				cps_main.c cps_operations.c cps_parse_validate.c \
+# 				cps_sort_assign_indices.c 
+
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o) $(MAIN_SRCS:%.c=%.o))
+BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(SRCS:%.c=%.o) $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o))
 # GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
 # GC_OBJS := $(addprefix $(OBJ_DIR)/, $(GC_SRCS:%.c=%.o))
 
@@ -44,23 +56,30 @@ LDFLAGS := -Llibft -lft
 
 all: $(LIBFT) $(NAME)
 
-# Linking push_swap executable with libft
 $(NAME): $(OBJ_DIR) $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
-# Rule to compile .o files
+bonus: $(LIBFT) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LDFLAGS) -o $(BONUS_NAME)
+
+
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Ensure the directories exist
+$(BONUS_DIR)/%.o: %.c | $(BONUS_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
+$(BONUS_DIR):
+	mkdir -p $(BONUS_DIR)
+
 clean:
-	$(RM) $(OBJ_DIR)
+	$(RM) $(OBJ_DIR) $(BONUS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS_NAME)
 	$(RM) libft/_obj libft/libft.a
 
 re: fclean submodule_update all
@@ -81,6 +100,7 @@ help:
 	@echo "Makefile for $(NAME)"
 	@echo "Usage:"
 	@echo "	make						Build the project"
+	@echo "	make bonus					Build the project with bonus functions"
 	@echo "	make clean					Remove object files in the main project"
 	@echo "	make fclean					Remove all build files, including libft's objects"
 	@echo "	make re						Clean and rebuild the project"
@@ -93,4 +113,4 @@ help:
 # -include $(BONUS_OBJS:%.o=%.d)
 # -include $(GNL_OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re submodule_update re_submodule submodule_rebuild help
+.PHONY: all bonus clean fclean re submodule_update re_submodule submodule_rebuild help
