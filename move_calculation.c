@@ -6,26 +6,42 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/03 18:28:00 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:36:13 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	calculate_rotation_a(t_stack *a, int target_position)
+// int	calculate_rotation_a(t_stack *a, int target_position)
+// {
+// 	if (target_position <= a->size / 2)
+// 		return (target_position);
+// 	else
+// 		return ((a->size - target_position) * -1);
+// }
+
+// int	calculate_rotation_b(t_stack *b, int b_position)
+// {
+// 	if (b_position <= b->size / 2)
+// 		return (b_position);
+// 	else
+// 		return ((b->size - b_position) * -1);
+// }
+
+int calculate_rotation_a(t_stack *a, int target_position)
 {
-	if (target_position <= a->size / 2)
-		return (target_position);
-	else
-		return ((a->size - target_position) * -1);
+    if (target_position <= a->size / 2)
+        return target_position; // Minimal upward rotation
+    else
+        return target_position - a->size; // Minimal downward rotation (negative value)
 }
 
-int	calculate_rotation_b(t_stack *b, int b_position)
+int calculate_rotation_b(t_stack *b, int b_position)
 {
-	if (b_position <= b->size / 2)
-		return (b_position);
-	else
-		return ((b->size - b_position) * -1);
+    if (b_position <= b->size / 2)
+        return b_position; // Minimal upward rotation
+    else
+        return b_position - b->size; // Minimal downward rotation (negative value)
 }
 
 int	calculate_rotation_cost(int rotation_a, int rotation_b)
@@ -73,7 +89,7 @@ int	calculate_move_cost(t_stack *a, t_stack *b, int b_position)
 	}
 	if (b_node == NULL)
 		return (INT_MAX);
-	target_position = find_target_position(a, b_node->index);
+	target_position = find_target_position(a, b_node->value);
 	rotation_a = calculate_rotation_a(a, target_position);
 	rotation_b = calculate_rotation_b(b, b_position);
 	return (calculate_rotation_cost(rotation_a, rotation_b));

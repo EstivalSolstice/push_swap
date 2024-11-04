@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/03 18:25:10 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:40:01 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 typedef struct s_node
 {
 	int				value;
-	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;
 }					t_node;
@@ -93,8 +92,8 @@ int					calculate_rotation_cost(int rotation_a, int rotation_b);
 
 // Stack Utility Functions
 
-t_node				*new_node(int value, int index);
-t_node *get_node_at	(t_stack *stack, int position);
+t_node				*new_node(int value);
+t_node				*get_node_at(t_stack *stack, int position);
 void				push(t_stack *stack, t_node *node);
 t_node				*pop(t_stack *stack);
 void				rotate(t_stack *stack);
@@ -121,14 +120,15 @@ void				parse_single_argument(int *argc, char ***argv);
 int					*parse_and_convert_args(char **argv, int size);
 int					*copy_and_sort_values(int *values, int size);
 int					*assign_indices(int *values, int *sorted_values, int size);
-void				initialize_stacks(t_push_swap *ps, int *values,
-						int *indices, int size);
+void				initialize_stacks(t_push_swap *ps, int *values, int size);
 void				sort_push_swap(t_push_swap *ps);
 void				final_rotate_sort(t_push_swap *ps);
 
 void				initialize_ab(t_push_swap *ps, t_stack *a, t_stack *b);
 void				error_exit_indices(int *values, int *sorted_values);
-void				error_exit_init(int *values, int *indices);
+void				error_exit_init(int *values);
 int					validate_args(char **argv, int size);
+
+void				print_stacks(t_stack *a, t_stack *b);
 
 #endif

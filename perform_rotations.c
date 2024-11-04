@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:53:17 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/03 18:38:46 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:48:11 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	rotate_opposite_case(t_push_swap *ps, int rotation_a, int rotation_b
 	}
 }
 
-void	perform_rotations(t_push_swap *ps, int rotation_a, int rotation_b)
+void perform_rotations(t_push_swap *ps, int rotation_a, int rotation_b)
 {
 	if (rotation_a >= 0 && rotation_b >= 0)
 		rotate_case1(ps, rotation_a, rotation_b);

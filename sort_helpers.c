@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:56:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 23:47:47 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:34:19 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_sorted(t_stack *stack)
 	current = stack->top;
 	while (current && current->next)
 	{
-		if (current->index > current->next->index)
+		if (current->value > current->next->value)
 		{
 			return (0);
 		}
@@ -47,9 +47,9 @@ void	sort_three(t_stack *a, t_push_swap *ps)
 	int	second;
 	int	third;
 
-	first = a->top->index;
-	second = a->top->next->index;
-	third = a->top->next->next->index;
+	first = a->top->value;
+	second = a->top->next->value;
+	third = a->top->next->next->value;
 	if (first < second && second < third)
 		return ;
 	if (first > second && second < third && first < third)
