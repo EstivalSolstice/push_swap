@@ -8,10 +8,14 @@ RM := rm -rf
 ###############                  DIRECTORIES                      ##############
 ################################################################################
 
+# OBJ_DIR := _obj
+# INC_DIRS := . libft
+# SRC_DIRS := . 
+# BONUS_DIR := checker_bonus/_obj_bonus
 OBJ_DIR := _obj
-INC_DIRS := . libft
-SRC_DIRS := . 
 BONUS_DIR := checker_bonus/_obj_bonus
+INC_DIRS := . libft checker_bonus
+SRC_DIRS := . checker_bonus
 
 # Tell the Makefile where headers and source files are
 vpath %.h $(INC_DIRS)
@@ -29,21 +33,39 @@ SRCS := 		helper_functions.c move_calculation.c find_target_pos.c \
 				perform_rotations.c final_rotate_sort.c swap.c
 MAIN_SRCS :=	push_swap_main.c
 
-BONUS_MAIN_SRCS := 	cps_main.c
-BONUS_SRCS := 		cps_convert_args.c cps_parse_validate.c cps_initialize.c \
-    					cps_operations.c cps_helpers.c cps_sort_assign_indices.c
+BONUS_MAIN_SRCS := 	checker_bonus/cps_main.c
+BONUS_SRCS := 		checker_bonus/cps_convert_args.c checker_bonus/cps_parse_validate.c \
+					checker_bonus/cps_initialize.c checker_bonus/cps_operations.c \
+					checker_bonus/cps_helpers.c checker_bonus/cps_sort_assign_indices.c
     					
 
 # BONUS_SRCS := 	cps_convert_args.c cps_helpers.c cps_initialize.c \
 # 				cps_main.c cps_operations.c cps_parse_validate.c \
 # 				cps_sort_assign_indices.c 
 
-OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o) $(MAIN_SRCS:%.c=%.o))
-BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(SRCS:%.c=%.o) $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o))
-# GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
-# GC_OBJS := $(addprefix $(OBJ_DIR)/, $(GC_SRCS:%.c=%.o))
+################################################################################
+###############                  OBJECT FILES                     ##############
+################################################################################
+
+# Common object files used by both main and bonus
+COMMON_OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+
+# Main program object files
+MAIN_OBJS := $(addprefix $(OBJ_DIR)/, $(MAIN_SRCS:%.c=%.o))
+
+# Bonus program object files
+BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o)))
 
 LIBFT := libft/libft.a
+
+
+# OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o) $(MAIN_SRCS:%.c=%.o))
+# # BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(SRCS:%.c=%.o) $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o))
+# BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(notdir $(SRCS:%.c=%.o) $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o)))
+# # GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
+# # GC_OBJS := $(addprefix $(OBJ_DIR)/, $(GC_SRCS:%.c=%.o))
+
+# LIBFT := libft/libft.a
 
 ################################################################################
 ########                         COMPILING                      ################
@@ -56,17 +78,17 @@ LDFLAGS := -Llibft -lft
 
 all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(COMMON_OBJS) $(MAIN_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(COMMON_OBJS) $(MAIN_OBJS) $(LDFLAGS) -o $(NAME)
 
-bonus: $(LIBFT) $(BONUS_OBJS)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LDFLAGS) -o $(BONUS_NAME)
+bonus: $(LIBFT) $(BONUS_DIR) $(COMMON_OBJS) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(COMMON_OBJS) $(BONUS_OBJS) $(LDFLAGS) -o $(BONUS_NAME)
 
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BONUS_DIR)/%.o: %.c | $(BONUS_DIR)
+$(BONUS_DIR)/%.o: checker_bonus/%.c | $(BONUS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):

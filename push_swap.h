@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/30 00:41:55 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:25:10 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,12 @@ int					calculate_rotation_a(t_stack *a, int target_index);
 int					calculate_rotation_b(t_stack *b, int element_index);
 int					find_target_position(t_stack *a, int element_index);
 int					calculate_move_cost(t_stack *a, t_stack *b, int b_position);
+int					calculate_rotation_cost(int rotation_a, int rotation_b);
 
 // Stack Utility Functions
 
 t_node				*new_node(int value, int index);
+t_node *get_node_at	(t_stack *stack, int position);
 void				push(t_stack *stack, t_node *node);
 t_node				*pop(t_stack *stack);
 void				rotate(t_stack *stack);
