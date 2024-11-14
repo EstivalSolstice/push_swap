@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/04 19:04:27 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:08:48 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	push_swap_execute(int argc, char **argv)
 	free(values);
 	free(sorted_values);
 	// free(indices);
-	ft_printf("Total moves: %d\n", ps.move_count);
+	// ft_printf("Total moves: %d\n", ps.move_count);
 }
 
 
