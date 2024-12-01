@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:48:49 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/14 17:41:09 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:43:58 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,4 @@ void	final_rotate_sort(t_push_swap *ps)
 	min_position = find_min_position(ps->a);
 	rotation = calculate_rotation_a(ps->a, min_position);
 	perform_final_rotation(ps, rotation);
-	// print_stacks(ps->a, ps->b);
 }

@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/04 18:40:01 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:40:03 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ typedef struct s_node
 
 /**
  * @struct s_stack
-
-	* @brief Represents a stack with a pointer to the top node and the current size.
+ * @brief Represents a stack with a pointer to the top node and the current size.
  *
  * @details This structure is used to track elements in a stack and support
  * operations like push, pop, and swap.
@@ -67,6 +66,13 @@ typedef struct s_push_swap
 	int				move_count;
 	int				print_mode;
 }					t_push_swap;
+
+typedef struct s_rotation
+{
+	int				rotation_a;
+	int				rotation_b;
+	int				cost;
+}					t_rotation;
 
 // Stack Operations (Swap, Push, Rotate)
 
@@ -107,8 +113,6 @@ void				perform_rotations(t_push_swap *ps, int rotation_a,
 
 // Helper Functions
 
-// void				free_split(char **split);
-// int					is_numeric(const char *str);
 void				swap_mod(int *a, int *b);
 int					partition(int *arr, int low, int high);
 void				quick_sort(int *arr, int low, int high);
@@ -119,7 +123,6 @@ void				push_swap_execute(int argc, char **argv);
 void				parse_single_argument(int *argc, char ***argv);
 int					*parse_and_convert_args(char **argv, int size);
 int					*copy_and_sort_values(int *values, int size);
-int					*assign_indices(int *values, int *sorted_values, int size);
 void				initialize_stacks(t_push_swap *ps, int *values, int size);
 void				sort_push_swap(t_push_swap *ps);
 void				final_rotate_sort(t_push_swap *ps);
@@ -129,6 +132,13 @@ void				error_exit_indices(int *values, int *sorted_values);
 void				error_exit_init(int *values);
 int					validate_args(char **argv, int size);
 
-void				print_stacks(t_stack *a, t_stack *b);
+// Functions for Pushing Elements to Stack B
+
+t_node				*get_node_at(t_stack *stack, int position);
+int					find_target_position_in_b(t_stack *b, int value);
+int					calculate_move_cost_to_b(t_stack *a, t_stack *b,
+						int a_position);
+void				find_best_move_to_b(t_push_swap *ps, int *best_rotation_a,
+						int *best_rotation_b);
 
 #endif

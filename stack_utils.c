@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:55:10 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/04 18:37:55 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:30:21 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_node	*new_node(int value)
 	node = malloc(sizeof(t_node));
 	if (!node)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	node->value = value;

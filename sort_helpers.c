@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:56:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/14 18:20:32 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:11:00 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	sort_three(t_stack *a, t_push_swap *ps)
-{
-	int	first;
-	int	second;
-	int	third;
+// void	sort_three(t_stack *a, t_push_swap *ps)
+// {
+// 	int	first;
+// 	int	second;
+// 	int	third;
 
-	first = a->top->value;
-	second = a->top->next->value;
-	third = a->top->next->next->value;
-	if (first < second && second < third)
-		return ;
-	if (first > second && second < third && first < third) // 213
-		return (sa(ps));
-	if (first < second && second > third && first < third) // 132
-		return (rra(ps), sa(ps));
-	if (first < second && second > third && first > third) // 312
-		return (ra(ps));
-	if (first > second && second < third && first > third) // 231
-		return (rra(ps));
-	if (first > second && second > third) // 321
-		return (ra(ps), sa(ps));
-}
+// 	first = a->top->value;
+// 	second = a->top->next->value;
+// 	third = a->top->next->next->value;
+// 	if (first < second && second < third)
+// 		return ;
+// 	if (first > second && second < third && first < third)
+// 	return (sa(ps));
+// 	if (first < second && second > third && first < third)
+// 	return (sa(ps));
+// 	if (first < second && second > third && first > third)
+// 	return (ra(ps));
+// 	if (first > second && second < third && first > third)
+// 	return (rra(ps));
+// 	if (first > second && second > third)
+// 		return (ra(ps), sa(ps));
+// }
 
 void	swap_mod(int *a, int *b)
 {

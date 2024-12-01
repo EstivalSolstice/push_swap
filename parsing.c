@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:06:06 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 19:35:32 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:30:05 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	*parse_and_convert_args(char **argv, int size)
 	values = malloc(sizeof(int) * size);
 	if (!values)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	while (i < size)

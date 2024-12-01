@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:11:15 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/28 19:11:39 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:29:52 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*copy_and_sort_values(int *values, int size)
 	sorted_values = malloc(sizeof(int) * size);
 	if (!sorted_values)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		free(values);
 		exit(1);
 	}

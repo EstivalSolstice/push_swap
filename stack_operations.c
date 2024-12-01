@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:51:07 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/14 17:41:40 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:48:23 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	sa(t_push_swap *ps)
 	if (ps->print_mode)
 		printf("sa\n");
 	ps->move_count++;
-	// print_stacks(ps->a, ps->b);
 }
 
 void	sb(t_push_swap *ps)
@@ -27,7 +26,6 @@ void	sb(t_push_swap *ps)
 	if (ps->print_mode)
 		printf("sb\n");
 	ps->move_count++;
-	// print_stacks(ps->a, ps->b);
 }
 
 void	ss(t_push_swap *ps)
@@ -37,7 +35,6 @@ void	ss(t_push_swap *ps)
 	if (ps->print_mode)
 		printf("ss\n");
 	ps->move_count++;
-	// print_stacks(ps->a, ps->b);
 }
 
 void	pa(t_push_swap *ps)
@@ -52,7 +49,6 @@ void	pa(t_push_swap *ps)
 			ft_printf("pa\n");
 		ps->move_count++;
 	}
-	// print_stacks(ps->a, ps->b);
 }
 
 void	pb(t_push_swap *ps)
@@ -67,5 +63,4 @@ void	pb(t_push_swap *ps)
 			ft_printf("pb\n");
 		ps->move_count++;
 	}
-	// print_stacks(ps->a, ps->b);
 }

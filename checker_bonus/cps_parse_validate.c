@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_parse_validate.c                             :+:      :+:    :+:   */
+/*   cps_parse_validate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:24:20 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/31 20:24:29 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:30:46 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	while (i < argc)
 	{
 		if (argv[i][0] == '\0')
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		i++;
@@ -39,7 +39,7 @@ int	parse_and_validate(int *argc, char ***argv)
 	parse_single_argument(argc, argv);
 	if (!validate_args(*argv, *argc - 1))
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	return (1);

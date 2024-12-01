@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_functions.c                                 :+:      :+:    :+:   */
+/*   assign_indices.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 17:05:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 23:50:06 by joltmann         ###   ########.fr       */
+/*   Created: 2024/11/29 18:40:20 by joltmann          #+#    #+#             */
+/*   Updated: 2024/12/01 16:15:48 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-// void	free_split(char **split)
-// {
-// 	int	i;
+int	*assign_indices(int *values, int *sorted_values, int count)
+{
+	int	*indices;
+	int	i;
+	int	j;
 
-// 	i = 0;
-// 	while (split[i])
-// 	{
-// 		free(split[i]);
-// 		i++;
-// 	}
-// 	free(split);
-// }
-
-// int	is_numeric(const char *str)
-// {
-// 	if (*str == '-' || *str == '+')
-// 		str++;
-// 	while (*str)
-// 	{
-// 		if (!isdigit(*str))
-// 			return (0);
-// 		str++;
-// 	}
-// 	return (1);
-// }
+	indices = malloc(sizeof(int) * count);
+	if (!indices)
+		return (NULL);
+	i = 0;
+	while (i < count)
+	{
+		j = 0;
+		while (j < count)
+		{
+			if (values[i] == sorted_values[j])
+			{
+				indices[i] = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (indices);
+}

@@ -6,49 +6,33 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:45:14 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/04 18:36:13 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:52:05 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	calculate_rotation_a(t_stack *a, int target_position)
-// {
-// 	if (target_position <= a->size / 2)
-// 		return (target_position);
-// 	else
-// 		return ((a->size - target_position) * -1);
-// }
-
-// int	calculate_rotation_b(t_stack *b, int b_position)
-// {
-// 	if (b_position <= b->size / 2)
-// 		return (b_position);
-// 	else
-// 		return ((b->size - b_position) * -1);
-// }
-
-int calculate_rotation_a(t_stack *a, int target_position)
+int	calculate_rotation_a(t_stack *a, int target_position)
 {
-    if (target_position <= a->size / 2)
-        return target_position; // Minimal upward rotation
-    else
-        return target_position - a->size; // Minimal downward rotation (negative value)
+	if (target_position <= a->size / 2)
+		return (target_position);
+	else
+		return (target_position - a->size);
 }
 
-int calculate_rotation_b(t_stack *b, int b_position)
+int	calculate_rotation_b(t_stack *b, int b_position)
 {
-    if (b_position <= b->size / 2)
-        return b_position; // Minimal upward rotation
-    else
-        return b_position - b->size; // Minimal downward rotation (negative value)
+	if (b_position <= b->size / 2)
+		return (b_position);
+	else
+		return (b_position - b->size);
 }
 
 int	calculate_rotation_cost(int rotation_a, int rotation_b)
 {
-	int		cost;
-	int		rotation_a_absolute;
-	int		rotation_b_absolute;
+	int	cost;
+	int	rotation_a_absolute;
+	int	rotation_b_absolute;
 
 	cost = 0;
 	if (rotation_a < 0)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_sort_assign_indices.c                      :+:      :+:    :+:   */
+/*   cps_sort_assign_indices.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:27:03 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/31 20:27:10 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:30:50 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*sort_and_assign_indices(int *values, int count)
 	if (!sorted_values)
 	{
 		free(values);
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (NULL);
 	}
 	indices = assign_indices(values, sorted_values, count);

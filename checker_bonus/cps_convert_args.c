@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_convert_vald.c                             :+:      :+:    :+:   */
+/*   cps_convert_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:25:49 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/31 20:25:56 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:30:25 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*convert_args_to_values(char **argv, int count)
 	values = malloc(sizeof(int) * count);
 	if (!values)
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (NULL);
 	}
 	while (i < count)
