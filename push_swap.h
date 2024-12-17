@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/29 18:40:03 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:00:14 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ void				rrr(t_push_swap *ps);
 
 // Move Evaluation Functions
 
-int					calculate_rotation_a(t_stack *a, int target_index);
-int					calculate_rotation_b(t_stack *b, int element_index);
-int					find_target_position(t_stack *a, int element_index);
+int					calculate_rotation_a(t_stack *a, int target_position);
+int					calculate_rotation_b(t_stack *b, int b_position);
+int					find_target_position(t_stack *a, int b_value);
 int					calculate_move_cost(t_stack *a, t_stack *b, int b_position);
 int					calculate_rotation_cost(int rotation_a, int rotation_b);
 

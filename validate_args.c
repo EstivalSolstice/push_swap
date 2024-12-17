@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:52:33 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/29 23:08:11 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:01:26 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_valid_integer(const char *str)
 	return (1);
 }
 
-static int	check_for_duplicates(int *values, int size)
+static int	check_for_duplicates(const int *values, int size)
 {
 	int	i;
 	int	j;

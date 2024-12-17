@@ -6,13 +6,13 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:40:20 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/01 16:15:48 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:02:32 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	*assign_indices(int *values, int *sorted_values, int count)
+int	*assign_indices(const int *values, int *sorted_values, int count)
 {
 	int	*indices;
 	int	i;

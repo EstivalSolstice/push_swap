@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:13:39 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/29 18:40:50 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:05:12 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int		checker_execute(int argc, char **argv);
 
 void	display_result(t_push_swap *ps);
 
-int		*assign_indices(int *values, int *sorted_values, int count);
+int		*assign_indices(const int *values, int *sorted_values, int count);
 
 #endif

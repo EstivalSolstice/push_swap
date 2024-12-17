@@ -105,19 +105,11 @@ fclean: clean
 	$(RM) $(NAME) $(BONUS_NAME)
 	$(RM) libft/_obj libft/libft.a
 
-re: fclean submodule_update all
+re: fclean all
 
 $(LIBFT):
 	make -C libft
 
-submodule_update:
-	git submodule update --remote --merge
-
-re_submodule: submodule_rebuild
-
-submodule_rebuild:
-	git submodule deinit -f .
-	git submodule update --init --recursive
 
 help:
 	@echo "Makefile for $(NAME)"
@@ -136,4 +128,4 @@ help:
 # -include $(BONUS_OBJS:%.o=%.d)
 # -include $(GNL_OBJS:%.o=%.d)
 
-.PHONY: all bonus clean fclean re submodule_update re_submodule submodule_rebuild help
+.PHONY: all bonus clean fclean re help
