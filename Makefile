@@ -25,15 +25,18 @@ vpath %.c $(SRC_DIRS)
 ###############                  SOURCE FILES                     ##############
 ################################################################################
 
-SRCS := 		move_calculation.c find_target_pos.c \
-				push_swap_sort.c sort_helpers.c validate_args.c \
-				sorting_algorithm.c stack_operations.c stack_rotate_reverse.c \
-				stack_rotate_simple.c stack_utils.c \
-				copy_and_sort_values.c initialize_stacks.c parsing.c \
-				perform_rotations.c final_rotate_sort.c swap.c push_to_b.c
-MAIN_SRCS :=	push_swap_main.c
+SRCS := 			move_calculation.c find_target_pos.c \
+					push_swap_sort.c sort_helpers.c validate_args.c \
+					sorting_algorithm.c stack_operations.c stack_rotate_reverse.c \
+					stack_rotate_simple.c stack_utils.c \
+					copy_and_sort_values.c initialize_stacks.c parsing.c \
+					perform_rotations.c final_rotate_sort.c swap.c push_to_b.c \
+					more_stack_ops.c push_swap_execute.c
+
+MAIN_SRCS :=		main.c
 
 BONUS_MAIN_SRCS := 	checker_bonus/cps_main.c
+
 BONUS_SRCS := 		checker_bonus/cps_convert_args.c checker_bonus/cps_parse_validate.c \
 					checker_bonus/cps_initialize.c checker_bonus/cps_operations.c \
 					checker_bonus/cps_helpers.c checker_bonus/cps_sort_assign_indices.c \

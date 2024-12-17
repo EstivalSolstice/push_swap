@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 17:00:14 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:59:27 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int					is_sorted(t_stack *stack);
 void				sort_three(t_stack *a, t_push_swap *ps);
 void				perform_rotations(t_push_swap *ps, int rotation_a,
 						int rotation_b);
+void				free_stacks(t_push_swap *ps);
 
 // Helper Functions
 
@@ -120,7 +121,7 @@ void				quick_sort(int *arr, int low, int high);
 // Main Functions for push_swap Execution and Setup
 
 void				push_swap_execute(int argc, char **argv);
-void				parse_single_argument(int *argc, char ***argv);
+int					parse_single_argument(int *argc, char ***argv);
 int					*parse_and_convert_args(char **argv, int size);
 int					*copy_and_sort_values(int *values, int size);
 void				initialize_stacks(t_push_swap *ps, int *values, int size);
@@ -131,6 +132,7 @@ void				initialize_ab(t_push_swap *ps, t_stack *a, t_stack *b);
 void				error_exit_indices(int *values, int *sorted_values);
 void				error_exit_init(int *values);
 int					validate_args(char **argv, int size);
+void				free_argv(char **argv);
 
 // Functions for Pushing Elements to Stack B
 

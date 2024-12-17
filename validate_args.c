@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:52:33 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 17:01:26 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 23:33:01 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,23 @@
 
 static int	is_valid_integer(const char *str)
 {
-	int	i;
+	long	num;
+	int		sign;
+	int		i;
 
 	i = 0;
+	num = 0;
+	sign = 1;
+	if (!str || *str == '\0')
+		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
+			return (0);
+		num = num * 10 + (str[i] - '0');
+		if ((sign * num) > INT_MAX || (sign * num) < INT_MIN)
 			return (0);
 		i++;
 	}

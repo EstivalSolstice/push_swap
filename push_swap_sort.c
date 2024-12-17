@@ -6,39 +6,11 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:59:35 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/29 20:17:01 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:33:01 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// static void	find_best_rotation(t_push_swap *ps, int *best_rotation_a,
-// 		int *best_rotation_b)
-// {
-// 	t_node	*b_node;
-// 	int		min_cost;
-// 	int		b_position;
-
-// 	b_node = ps->b->top;
-// 	min_cost = INT_MAX;
-// 	b_position = 0;
-// 	int cost, rotation_a, rotation_b, target_position;
-// 	while (b_node)
-// 	{
-// 		target_position = find_target_position(ps->a, b_node->value);
-// 		rotation_a = calculate_rotation_a(ps->a, target_position);
-// 		rotation_b = calculate_rotation_b(ps->b, b_position);
-// 		cost = calculate_rotation_cost(rotation_a, rotation_b);
-// 		if (cost < min_cost)
-// 		{
-// 			min_cost = cost;
-// 			*best_rotation_a = rotation_a;
-// 			*best_rotation_b = rotation_b;
-// 		}
-// 		b_node = b_node->next;
-// 		b_position++;
-// 	}
-// }
 
 static void	update_best_rotation(t_rotation *current, t_rotation *best)
 {
@@ -90,7 +62,7 @@ static void	push_until_three(t_push_swap *ps)
 	int			best_rotation_a;
 	int			best_rotation_b;
 
-	while (ps->a->size > 1)
+	while (ps->a->size > 3)
 	{
 		find_best_move_to_b(ps, &best_rotation_a, &best_rotation_b);
 		perform_rotations(ps, best_rotation_a, best_rotation_b);
@@ -103,7 +75,13 @@ void	sort_push_swap(t_push_swap *ps)
 	int	best_rotation_a;
 	int	best_rotation_b;
 
+	if (ps->a->size == 2)
+	{
+		sa(ps);
+		return ;
+	}
 	push_until_three(ps);
+	sort_three(ps->a, ps);
 	while (ps->b->size > 0)
 	{
 		find_best_rotation(ps, &best_rotation_a, &best_rotation_b);
