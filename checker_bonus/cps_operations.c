@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:05:47 by joltmann          #+#    #+#             */
-/*   Updated: 2024/11/29 18:30:33 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:01:07 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void	invalid_input(t_push_swap *ps, char *operation)
 {
 	write(2, "Error\n", 6);
-	free(operation);
-	free_stack(ps->b);
+	if (operation)
+		free(operation);
+	// free_stack(ps->a);
+	// free_stack(ps->b);
+	free_stacks(ps);
 	exit(1);
 }
 
