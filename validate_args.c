@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:52:33 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 23:33:01 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:38:17 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_valid_integer(const char *str)
 	i = 0;
 	num = 0;
 	sign = 1;
-	if (!str || *str == '\0')
+	if (!str)
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -70,9 +70,9 @@ int	validate_args(char **argv, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (!is_valid_integer(argv[i + 1]))
+		if (!is_valid_integer(argv[i]))
 			return (free(values), 0);
-		tmp_value = ft_atoi(argv[i + 1]);
+		tmp_value = ft_atoi(argv[i]);
 		if (tmp_value < INT_MIN || tmp_value > INT_MAX)
 			return (free(values), 0);
 		values[i] = (int)tmp_value;

@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 21:59:27 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:59:26 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,9 @@ int					calculate_move_cost_to_b(t_stack *a, t_stack *b,
 						int a_position);
 void				find_best_move_to_b(t_push_swap *ps, int *best_rotation_a,
 						int *best_rotation_b);
+// parsing_utils.c
+void				free_argv(char **argv);
+void				free_new_argv_on_error(char **new_argv, int allocated);
+void				free_split(char **split);
 
 #endif

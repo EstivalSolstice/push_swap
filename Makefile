@@ -31,7 +31,7 @@ SRCS := 			move_calculation.c find_target_pos.c \
 					stack_rotate_simple.c stack_utils.c \
 					copy_and_sort_values.c initialize_stacks.c parsing.c \
 					perform_rotations.c final_rotate_sort.c swap.c push_to_b.c \
-					more_stack_ops.c push_swap_execute.c
+					more_stack_ops.c push_swap_execute.c parsing_utils.c 
 
 MAIN_SRCS :=		main.c
 

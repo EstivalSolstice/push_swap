@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 23:46:15 by joltmann         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:56:43 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	handle_parsing(int *argc, char ***argv)
 	int	argv_modified;
 
 	argv_modified = parse_single_argument(argc, argv);
-	if (!validate_args(*argv, *argc - 1))
+	if (!validate_args((*argv) + 1, *argc - 1))
 	{
 		write(2, "Error\n", 6);
 		if (argv_modified)
@@ -60,7 +60,9 @@ void	push_swap_execute(int argc, char **argv)
 
 	ps.print_mode = 1;
 	argv_modified = handle_parsing(&argc, &argv);
-	if (!argv_modified)
+	if (argc <= 2)
+		return (free_if_modified(argv_modified, argv));
+	if (!argv_modified && argc == 2)
 		return ;
 	size = argc - 1;
 	values = parse_and_convert_args(argv, size);
