@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:47:17 by joltmann          #+#    #+#             */
-/*   Updated: 2024/10/27 16:11:59 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/01/23 23:26:26 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
  *          and prints formatted output to the standard output.
  *
  * @param fmt   The format string containing regular characters and specifiers.
-
-					* 				Additional arguments can be passed based on the format specifiers.
+ * Additional arguments can be passed based on the format specifiers.
  *
  * @return The number of characters printed, or -1 on error.
  */

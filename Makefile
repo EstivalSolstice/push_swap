@@ -14,6 +14,7 @@ RM := rm -rf
 # BONUS_DIR := checker_bonus/_obj_bonus
 OBJ_DIR := _obj
 BONUS_DIR := checker_bonus/_obj_bonus
+LIBFT_DIR := libft/_obj
 INC_DIRS := . libft checker_bonus
 SRC_DIRS := . checker_bonus
 
@@ -102,10 +103,10 @@ $(BONUS_DIR):
 	mkdir -p $(BONUS_DIR)
 
 clean:
-	$(RM) $(OBJ_DIR) $(BONUS_DIR)
+	$(RM) $(OBJ_DIR) $(BONUS_DIR) $(LIBFT_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS_NAME)
+	$(RM) $(NAME) $(BONUS_NAME) $(LIBFT_DIR)
 	$(RM) libft/_obj libft/libft.a
 
 re: fclean all
@@ -128,7 +129,5 @@ help:
 	@echo "	make help					Display this help message"
 
 -include $(OBJS:%.o=%.d)
-# -include $(BONUS_OBJS:%.o=%.d)
-# -include $(GNL_OBJS:%.o=%.d)
 
 .PHONY: all bonus clean fclean re help

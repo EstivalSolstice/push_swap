@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:56:11 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/17 19:55:01 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/01/24 01:13:05 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	sort_three(t_stack *a, t_push_swap *ps)
 	if (first > second && second < third && first < third)
 		return (sa(ps));
 	if (first < second && second > third && first < third)
-		return (sa(ps));
+		return (rra(ps), sa(ps));
 	if (first < second && second > third && first > third)
 		return (rra(ps));
 	if (first > second && second < third && first > third)

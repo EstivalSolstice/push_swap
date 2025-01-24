@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:13:39 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/18 17:03:16 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/01/23 23:29:45 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 void	ft_lstclear_tnode(t_node **node, void (*del)(void *));
 // void	free_stack(t_stack *stack);
 
-int		initialize_values(const char **argv, int *values, int *indices, int count);
+int		initialize_values(const char **argv, int *values,
+			int *indices, int count);
 int		initialize_push_swap(t_push_swap *ps, int *values, int count);
 
 int		check_args(int argc, char **argv);
