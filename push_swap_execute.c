@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:39:12 by joltmann          #+#    #+#             */
-/*   Updated: 2025/01/25 19:08:34 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/03/03 10:12:07 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,11 @@ void	push_swap_execute(int argc, char **argv)
 	argv_modified = handle_parsing(&argc, &argv);
 	if (argc <= 2)
 		return (free_if_modified(argv_modified, argv));
-	// if (!argv_modified)
-	// 	return ;
-	size = argc - 1;
-	if (!validate_args(argv + 1, size))
-	{
-		free_if_modified(argv_modified, argv);
+	if (!argv_modified && argc == 2)
 		return ;
-	}
+	if (!argv_modified && !validate_args(argv + 1, argc - 1))
+		return (free_if_modified(argv_modified, argv));
+	size = argc - 1;
 	values = parse_and_convert_args(argv, size);
 	sorted_values = copy_and_sort_values(values, size);
 	initialize_stacks(&ps, values, size);

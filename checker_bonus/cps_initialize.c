@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:20:31 by joltmann          #+#    #+#             */
-/*   Updated: 2025/01/24 01:13:27 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/03/04 07:25:29 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	initialize_values(const char **argv, int *values, int *indices, int count)
 	i = 0;
 	while (i < (count - 1))
 	{
-		values[i] = ft_atoi(argv[i + 1]);
+		values[i] = ft_atoi(argv[i]);
 		indices[i] = i;
 		i++;
 	}

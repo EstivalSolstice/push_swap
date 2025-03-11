@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:27:36 by joltmann          #+#    #+#             */
-/*   Updated: 2025/01/24 00:20:26 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/03/04 07:08:13 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,4 @@ void				free_argv(char **argv);
 void				free_new_argv_on_error(char **new_argv, int allocated);
 void				free_split(char **split);
 
-void				print_stack(t_stack *stack, const char *stack_name);
 #endif

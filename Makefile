@@ -59,7 +59,9 @@ COMMON_OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 MAIN_OBJS := $(addprefix $(OBJ_DIR)/, $(MAIN_SRCS:%.c=%.o))
 
 # Bonus program object files
-BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o)))
+# BONUS_OBJS := $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRCS:%.c=%.o) $(BONUS_MAIN_SRCS:%.c=%.o)))
+BONUS_OBJS := $(BONUS_SRCS:checker_bonus%.c=$(BONUS_DIR)/%.o) $(BONUS_MAIN_SRCS:checker_bonus/%.c=$(BONUS_DIR)/%.o)
+
 
 LIBFT := libft/libft.a
 
@@ -86,8 +88,13 @@ all: $(LIBFT) $(NAME)
 $(NAME): $(OBJ_DIR) $(COMMON_OBJS) $(MAIN_OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(COMMON_OBJS) $(MAIN_OBJS) $(LDFLAGS) -o $(NAME)
 
-bonus: $(LIBFT) $(BONUS_NAME)
-$(BONUS_NAME): $(LIBFT) $(BONUS_DIR) $(COMMON_OBJS) $(BONUS_OBJS)
+# bonus: $(LIBFT) $(BONUS_DIR) $(COMMON_OBJS) $(BONUS_OBJS)
+# 	$(CC) $(CFLAGS) $(COMMON_OBJS) $(BONUS_OBJS) $(LDFLAGS) -o $(BONUS_NAME)
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(COMMON_OBJS) $(BONUS_OBJS) $(LIBFT)
+	@touch $@  # Ensure file exists
 	$(CC) $(CFLAGS) $(COMMON_OBJS) $(BONUS_OBJS) $(LDFLAGS) -o $(BONUS_NAME)
 
 
@@ -124,9 +131,6 @@ help:
 	@echo "	make clean					Remove object files in the main project"
 	@echo "	make fclean					Remove all build files, including libft's objects"
 	@echo "	make re						Clean and rebuild the project"
-	@echo "	make submodule_update				Update all submodules to the latest commit"
-	@echo "	make re_submodule				Fully reset and update submodules"
-	@echo "	make submodule_rebuild				Reinitialize submodules from scratch"
 	@echo "	make help					Display this help message"
 
 -include $(OBJS:%.o=%.d)

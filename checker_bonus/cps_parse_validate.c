@@ -6,7 +6,7 @@
 /*   By: joltmann <joltmann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:24:20 by joltmann          #+#    #+#             */
-/*   Updated: 2024/12/18 16:02:46 by joltmann         ###   ########.fr       */
+/*   Updated: 2025/03/03 10:23:18 by joltmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_args(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if (argc < 2)
+	if (argc < 2 || !validate_args(argv + 1, argc - 1))
 	{
 		write(2, "Error\n", 6);
 		return (0);
